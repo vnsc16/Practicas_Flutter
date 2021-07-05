@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:curso_flutter/src/pages/practica2_page.dart';
+import 'package:curso_flutter/src/pages/practica5_page.dart';
 import 'package:curso_flutter/src/pages/alert_page.dart';
 import 'routes/routes.dart';
 
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(context) {
     return MaterialApp(
       home: Center(
-        child: Practica2Page(),
+        child: Practica5Page(),
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
