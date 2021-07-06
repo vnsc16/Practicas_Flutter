@@ -7,8 +7,11 @@ class Practica5Page extends StatefulWidget {
 
 class _ContadorPageState extends State<Practica5Page> {
   int intensityValue = 0, depthValue = 0, surfaceIntensityValue = 0;
+  NeumorphicButton item1 = NeumorphicButton();
+
   NetworkImage imagenVariable = NetworkImage(
       'https://i.pinimg.com/originals/37/8d/b2/378db271f78d2b3789e39edb4f12b24d.jpg');
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,20 +32,69 @@ class _ContadorPageState extends State<Practica5Page> {
   }
 
   Widget _botonImageNeuporhic() {
+    item1 = NeumorphicButton(
+      onPressed: () {},
+      style: NeumorphicStyle(
+          shape: NeumorphicShape.flat,
+          boxShape: NeumorphicBoxShape.circle(),
+          intensity: intensityValue * 0.1,
+          depth: depthValue * 1,
+          surfaceIntensity: surfaceIntensityValue * 0.1),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: Image(
+          height: 200, 
+          image: imagenVariable
+        ),
+      )
+    );
+
     return Container(
+      // color: Colors.red,
       margin: EdgeInsets.only(top: 20),
-      child: NeumorphicButton(
-          onPressed: () {},
-          style: NeumorphicStyle(
-              shape: NeumorphicShape.flat,
-              boxShape: NeumorphicBoxShape.circle(),
-              intensity: intensityValue * 0.1,
-              depth: depthValue * 1,
-              surfaceIntensity: surfaceIntensityValue * 0.1),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image(height: 210, image: imagenVariable),
-          )),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            flex: 15,
+            child: NeumorphicButton(
+              child: Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                print('Click left');
+              },
+            ),
+          ),
+          Expanded(
+            flex: 70,
+            child: Container(
+              child: item1,
+              margin: EdgeInsets.all(8),
+            ),
+          ),
+          Expanded(
+            flex: 15,
+            child: NeumorphicButton(
+              child: Icon(Icons.arrow_forward_ios),
+              onPressed: () {
+                print('Click right');
+              },
+            ),
+          ),
+        ],
+      ),
+
+      // child: NeumorphicButton(
+      //     onPressed: () {},
+      //     style: NeumorphicStyle(
+      //         shape: NeumorphicShape.flat,
+      //         boxShape: NeumorphicBoxShape.circle(),
+      //         intensity: intensityValue * 0.1,
+      //         depth: depthValue * 1,
+      //         surfaceIntensity: surfaceIntensityValue * 0.1),
+      //     child: ClipRRect(
+      //       borderRadius: BorderRadius.circular(100),
+      //       child: Image(height: 210, image: imagenVariable),
+      //     )),
     );
   }
 
@@ -63,7 +115,8 @@ class _ContadorPageState extends State<Practica5Page> {
             child: Icon(Icons.keyboard_arrow_right_sharp),
             onPressed: () {
               setState(() {
-                imagenVariable = NetworkImage('https://i.pinimg.com/originals/f4/ce/70/f4ce709950cb7f4969f73ee01b551df5.jpg');
+                imagenVariable = NetworkImage(
+                    'https://i.pinimg.com/originals/f4/ce/70/f4ce709950cb7f4969f73ee01b551df5.jpg');
               });
             }),
       ],
@@ -150,4 +203,6 @@ class _ContadorPageState extends State<Practica5Page> {
       ],
     );
   }
+
+
 }
